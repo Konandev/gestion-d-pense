@@ -1,0 +1,284 @@
+# 💰 Mon Budget — Gestionnaire de dépenses
+
+<p align="center">
+  <img src="public/assets/logo.png" alt="Mon Budget Logo" width="120">
+</p>
+
+<h3 align="center">Gérez simplement vos dépenses en FCFA</h3>
+
+<p align="center">
+  Une application web moderne pour suivre, analyser et exporter facilement ses dépenses quotidiennes.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-Express-green?logo=node.js" alt="Node.js">
+  <img src="https://img.shields.io/badge/SQLite-better--sqlite3-blue?logo=sqlite" alt="SQLite">
+  <img src="https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Chart.js-Graphs-ff6384" alt="Chart.js">
+  <img src="https://img.shields.io/badge/ExcelJS-Excel-217346" alt="ExcelJS">
+</p>
+
+---
+
+## 📌 Présentation
+
+**Mon Budget** est une application web de gestion de dépenses permettant de garder une vue claire sur son budget.
+
+L'application permet d'enregistrer ses dépenses en **FCFA**, de les classer par catégorie, de consulter des statistiques et de visualiser l'évolution de ses dépenses grâce à des graphiques.
+
+Elle peut être utilisée aussi bien pour gérer ses **dépenses personnelles** que pour suivre un petit budget professionnel.
+
+---
+
+## ✨ Fonctionnalités
+
+### 💸 Gestion des dépenses
+
+- ➕ Ajouter une dépense
+- ✏️ Modifier une dépense
+- 🗑️ Supprimer une dépense
+- 📅 Choisir une date
+- 🏷️ Attribuer une catégorie
+- 📝 Ajouter une note
+- 💰 Montants en FCFA
+
+### 📊 Tableau de bord
+
+L'application affiche notamment :
+
+- Total des dépenses du mois
+- Nombre de dépenses
+- Dépense moyenne
+- Plus grande dépense
+- Comparaison avec le mois précédent
+- Répartition des dépenses par catégorie
+
+### 📈 Visualisation
+
+Deux types de graphiques sont disponibles :
+
+**Graphique en donut**
+- Répartition des dépenses par catégorie
+
+**Graphique d'évolution**
+- Évolution des dépenses sur les 6 derniers mois
+
+Les graphiques sont réalisés avec **Chart.js**.
+
+### 🔎 Filtres
+
+Les dépenses peuvent être filtrées par :
+
+- Mois
+- Catégorie
+
+### 📁 Exportation
+
+Possibilité d'exporter les données au format :
+
+- 📊 **Excel (.xlsx)**
+- 📄 **CSV (.csv)**
+
+L'export Excel contient également une **ligne de total**.
+
+### 🌙 Mode sombre
+
+L'application possède un mode sombre :
+
+- Activation manuelle
+- Préférence mémorisée
+- Détection automatique du thème du système lors de la première utilisation
+
+### 📱 Responsive Design
+
+L'interface est adaptée aux :
+
+- 💻 Ordinateurs
+- 📱 Smartphones
+- 📲 Tablettes
+
+Sur mobile, l'application utilise notamment une **barre d'onglets** et un bouton **« + »** pour ajouter rapidement une dépense.
+
+---
+
+## 🛠️ Technologies utilisées
+
+| Technologie | Utilisation |
+|---|---|
+| 🟢 Node.js | Environnement serveur |
+| 🚂 Express | API et serveur web |
+| 🗄️ SQLite | Base de données |
+| ⚡ better-sqlite3 | Communication avec SQLite |
+| 🌐 HTML5 | Structure de l'interface |
+| 🎨 CSS3 | Design et responsive |
+| 🟨 JavaScript | Interactions et logique frontend |
+| 📊 Chart.js | Graphiques |
+| 📗 ExcelJS | Génération des fichiers Excel |
+
+---
+
+## 📂 Structure du projet
+
+```text
+mon-budget/
+│
+├── server.js              # Serveur Express et routes API
+├── db.js                  # Connexion et schéma SQLite
+├── seed.js                # Données de démonstration
+├── package.json
+│
+├── public/
+│   ├── index.html         # Interface principale
+│   ├── style.css          # Styles de l'application
+│   ├── app.js             # Logique frontend
+│   │
+│   └── assets/
+│       └── logo.png       # Logo de l'application
+│
+└── README.md
+```
+
+---
+
+## 🚀 Installation
+
+### 1. Cloner le projet
+
+```bash
+git clone https://github.com/TON-USERNAME/mon-budget.git
+```
+
+### 2. Entrer dans le dossier
+
+```bash
+cd mon-budget
+```
+
+### 3. Installer les dépendances
+
+```bash
+npm install
+```
+
+### 4. Ajouter les données de démonstration
+
+Cette étape est optionnelle.
+
+```bash
+npm run seed
+```
+
+### 5. Démarrer l'application
+
+```bash
+npm start
+```
+
+L'application sera accessible à l'adresse :
+
+```text
+http://localhost:3000
+```
+
+---
+
+## 🔌 API
+
+### Dépenses
+
+| Méthode | Route | Description |
+|---|---|---|
+| GET | `/api/expenses` | Liste des dépenses |
+| POST | `/api/expenses` | Ajouter une dépense |
+| PUT | `/api/expenses/:id` | Modifier une dépense |
+| DELETE | `/api/expenses/:id` | Supprimer une dépense |
+
+### Statistiques
+
+| Méthode | Route | Description |
+|---|---|---|
+| GET | `/api/summary` | Statistiques et répartition |
+| GET | `/api/monthly` | Évolution mensuelle |
+
+### Export
+
+| Méthode | Route | Description |
+|---|---|---|
+| GET | `/api/export/excel` | Export Excel |
+| GET | `/api/export/csv` | Export CSV |
+
+### Paramètres disponibles
+
+```text
+/api/expenses?month=YYYY-MM&category=&limit=
+```
+
+Exemple :
+
+```text
+/api/expenses?month=2026-09&category=Alimentation
+```
+
+---
+
+## 📊 Exemple de données
+
+Une dépense peut contenir :
+
+```json
+{
+  "amount": 5000,
+  "category": "Alimentation",
+  "date": "2026-09-21",
+  "note": "Déjeuner"
+}
+```
+
+---
+
+## 🎯 Objectif du projet
+
+Le projet a été conçu pour proposer une solution simple permettant de :
+
+- mieux comprendre ses habitudes de consommation ;
+- suivre son budget mensuel ;
+- identifier les catégories qui représentent le plus de dépenses ;
+- comparer ses dépenses d'un mois à l'autre ;
+- conserver ses données sous forme de fichiers Excel ou CSV.
+
+---
+
+## 🔮 Améliorations possibles
+
+Voici quelques fonctionnalités qui pourraient être ajoutées dans les prochaines versions :
+
+- 🔐 Création de comptes utilisateurs
+- ☁️ Synchronisation avec une base de données en ligne
+- 💰 Gestion des revenus
+- 🎯 Définition d'un budget mensuel
+- 🔔 Alertes lorsque le budget est dépassé
+- 📱 Application mobile
+- 📊 Statistiques plus avancées
+- ☁️ Sauvegarde automatique des données
+
+---
+
+## 👨‍💻 Auteur
+
+**Yves Saviote Konan**
+
+Projet réalisé dans le cadre de l'apprentissage du **développement web**.
+
+---
+
+## ⭐ Contribution
+
+Les suggestions et améliorations sont les bienvenues.
+
+Si le projet vous plaît, n'hésitez pas à lui attribuer une ⭐ sur GitHub.
+
+---
+
+## 📄 Licence
+
+Ce projet est disponible à des fins d'apprentissage et de démonstration.
